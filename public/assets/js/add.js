@@ -1,5 +1,5 @@
   $.ajax({
-    url: "/api/add",
+    url: "/api/view",
     method: "GET"
   }).then(function( data){
     console.log(data)

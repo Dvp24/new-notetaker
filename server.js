@@ -1,6 +1,6 @@
 var express = require("express");
-var apiRoutes = require("./routes/apiRoutes");
-var htmlRoutes = require("./routes/htmlRoutes");
+var apiroutes = require("./routes/apiroutes");
+var htmlroutes = require("./routes/htmlroutes");
 
 // Tells node that we are creating an "express" server
 var app = express();
@@ -15,8 +15,8 @@ app.use(express.static("public"));
 // Sets up route middleware
 // Use the apiRoutes file for any apiRoutes
 // Use the htmlRoutes file for all other routes
-app.use(apiRoutes);
-app.use(htmlRoutes);
+app.use(apiroutes);
+app.use(htmlroutes);
 
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);
