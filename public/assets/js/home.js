@@ -21,6 +21,7 @@ var getAndRenderNotes = function () {
 }
 getAndRenderNotes()
 
+//view the note in main area
 $('body').on('click', 'span.viewNote', function () {
   var temp = $(this).text()
   console.log(temp)
@@ -32,11 +33,11 @@ $('body').on('click', 'span.viewNote', function () {
     var tempo = data
     console.log("here")
     console.log(tempo)
-    $("input").text(tempo[0].name)
+    $("input").val(tempo[0].name)
     $("textarea").text(tempo[0].containt)
   })
 })
-
+// save button 
 $(".save").on("click", function () {
   console.log("hello")
   var temp1 = {
@@ -54,13 +55,12 @@ $(".save").on("click", function () {
     data: temp1
   }).then(function (data) {
     console.log(data)
-    windows.location = "/view"
-    location.reload()
     $("input").empty();
     $("textarea").empty();
+    location.reload()
   })
 })
-
+// delete button for each note
 $("body").on("click", "span.delete", function () {
   console.log("hi")
   var temporary = $(this).attr('data-id')
@@ -79,6 +79,7 @@ $("body").on("click", "span.delete", function () {
   })
 
 })
+// empty the main atrea 
 $(".newnote").on("click",function(){
   $("input").empty();
     $("textarea").empty();
