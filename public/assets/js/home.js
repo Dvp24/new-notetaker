@@ -55,7 +55,7 @@ $(".save").on("click", function () {
     data: temp1
   }).then(function (data) {
     console.log(data)
-    $("input").empty();
+    $("input").val("");
     $("textarea").empty();
     location.reload()
   })
