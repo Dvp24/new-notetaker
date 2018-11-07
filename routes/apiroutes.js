@@ -6,8 +6,9 @@ router.get("/api/view", function(req, res) {
     res.json(dbTables);
   });
 });
-router.get("/api/view/this", function(req, res) {
-  connection.query("SELECT * FROM note WHERE name ?",req.body, function(err, data) {
+router.post("/api/view/this", function(req, res) {
+  console.log(req.body);
+  connection.query("SELECT * FROM note WHERE name = ?",req.body.name, function(err, data) {
     if(err) throw err
     res.json(data);
   });

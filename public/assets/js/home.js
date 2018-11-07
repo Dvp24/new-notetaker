@@ -14,25 +14,27 @@ var getAndRenderNotes = function () {
       )
         .append("<span class ='delete' data-id='" + data[i].id + "' ><i class='fas fa-trash-alt'></i></span>")
       $(".vertical").append($listItem);
-      
+
     }
   })
   // location.reload()
 }
 getAndRenderNotes()
+
 $('body').on('click', 'span.viewNote', function () {
-  console.log("hello there")
   var temp = $(this).text()
-$.ajax({
-  url: "/api/view/this",
-  method: "GET",
-  data:temp 
-}).then(function (data) {
-   var tempo = data
-  console.log("here")
-  console.log(tempo)
-  // why is it re
-})
+  console.log(temp)
+  $.ajax({
+    url: "/api/view/this",
+    method: "POST",
+    data: {"name":temp}
+  }).then(function (data) {
+    var tempo = data
+    console.log("here")
+    console.log(tempo)
+    $("input").text(tempo[0].name)
+    $("textarea").text(tempo[0].containt)
+  })
 })
 
 $(".save").on("click", function () {
@@ -66,15 +68,19 @@ $("body").on("click", "span.delete", function () {
   $.ajax({
     url: "/api/del",
     method: "DELETE",
-    data:{"noteid":temporary}
+    data: { "noteid": temporary }
   }).then(function (data) {
-     var tempo = data
+    var tempo = data
     //  windows.location = "/view"
-     location.reload()
+    location.reload()
     console.log("here")
     console.log(tempo)
     // why is it re
   })
 
+})
+$(".newnote").on("click",function(){
+  $("input").empty();
+    $("textarea").empty();
 })
 
