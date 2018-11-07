@@ -81,7 +81,7 @@ $("body").on("click", "span.delete", function () {
 })
 // empty the main atrea 
 $(".newnote").on("click",function(){
-  $("input").empty();
-    $("textarea").empty();
+  $("input").val("");
+  $("textarea").empty();
 })
 
